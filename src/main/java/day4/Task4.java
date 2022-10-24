@@ -14,7 +14,8 @@
 7
 
 *Пояснение. Первое число - сумма тройки [8742, 1040, 3254].
-Второе число - индекс первого элемента тройки, то есть индекс числа 8742.*/
+Второе число - индекс первого элемента тройки, то есть индекс числа 8742.
+*/
 
 package day4;
 
@@ -24,28 +25,29 @@ import java.util.Random;
 public class Task4 {
     public static void main(String[] args) {
         int size = 10;
-        int [] array = new int[size];
+        int[] array = new int[size];
         Random random = new Random();
-        for (int a = 0; a < array.length; a++){
-            array [a] = random.nextInt(10001);
+        for (int a = 0; a < array.length; a++) {
+            array[a] = random.nextInt(10001);
         }
-
-        int [] sums = new int[size - 3];
+        int group = 3; //количество складываемых элементов
+        int difference = group - 1; //смещение
+        int numOfSums = size - difference;//количество сумм элементов
         int sum;
-        for (int i = 0; i < size-3; i++){
-            sum = array[i] + array[i+1] + array[i+2];
-            sums [i] = sum;
-        }
-        System.out.println(Arrays.toString(sums));
-        int max = sums[0];
+        int maxSum = 0;
         int maxIndex = 0;
-        for(int j = 0; j < sums.length; j++){
-            if(max < sums[j]){
-                max = sums[j];
-                maxIndex = j;
-            }
+        for (int i = 0; i < numOfSums; i++) {
+            sum = 0;
+            for (int j = i; j < i + 3; j++){
+                sum += array[j];
         }
-        System.out.println(max);
+            if(maxSum < sum){
+                maxSum = sum;
+                maxIndex = i;
+            }
+    }
+        System.out.println(Arrays.toString(array));
+        System.out.println(maxSum);
         System.out.println(maxIndex);
     }
 }

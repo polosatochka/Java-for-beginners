@@ -39,11 +39,11 @@ public class Task1 {
         for(int i = 0; i < array.length; i++){
             array[i] = rand.nextInt(11);
         }
-        for(int a :  array){
-            System.out.print("["+ a +"] ");
-        }
+
+        System.out.println(Arrays.toString(array));
+
         System.out.println(" ");
-        System.out.println("Длина массива: " + n);
+        System.out.println("Длина массива: " + array.length);
 
         int morethaneight = 0;
         for(int b :  array){

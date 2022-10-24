@@ -11,8 +11,6 @@
 Ответ: 2 (индекс строки, сумма чисел в которой максимальна)
 */
 package day4;
-
-import java.util.Arrays;
 import java.util.Random;
 
 public class Task3 {
@@ -28,29 +26,20 @@ public class Task3 {
             }
             System.out.println();
         }
-
-
-        int sum;
-        int [] allsums = new int [m];
-        int max = allsums[0];
-        for(int i = 0; i < m; i++){
-            sum = 0;
-            for(int j = 0; j < n; j++){
-                sum += twoD[i][j];
-            }
-            allsums [i] = sum;
-        }
-
+        int maxSum = 0;
+        int nextSum;
         int line = 0;
-        for(int i = 0; i < allsums.length; i++){
-            int compareTo = allsums[i];
-            if(max < compareTo){
-                max = compareTo;
+        for(int i = 0; i < m; i++){
+            nextSum = 0;
+            for(int j = 0; j < twoD[i].length; j++){
+                nextSum += twoD[i][j];
+            }
+            if(nextSum >= maxSum){
+                maxSum = nextSum;
                 line = i;
             }
         }
-        System.out.println(Arrays.toString(allsums));
-        System.out.println(max);
+        System.out.println(maxSum);
         System.out.println(line);
     }
 }
